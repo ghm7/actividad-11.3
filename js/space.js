@@ -15,18 +15,28 @@ const getJSONData = async () => {
 
 const showCards = (items) => {
   items.forEach((item) => {
-    const { title, description } = item.data[0];
-    const image = item.links[0].href;
-    const card = document.createElement('div');
-    card.classList = 'card';
-    container.appendChild(card);
-    card.innerHTML = `
-    <img class="card-img-top" src="${image}" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">${title}</h5>
-      <p class="card-text">${description}</p>
-    </div>
-  `;
+    console.log(item);
+    if (data[0].media_type == 'image') {
+      console.log(data[0].media_type);
+    }
+    // const { title, description } = item.data[0];
+    // // let image = '';
+    // // // for (const property in item) {
+    // // //   image = item[property][0];
+    // // //   // console.log(`${property}: ${item[property]}`);
+    // // // }
+    // console.log(image);
+
+    // const card = document.createElement('div');
+    // card.classList = 'card';
+    // container.appendChild(card);
+    // card.innerHTML = `
+    //   <img class="card-img-top" src="${image}" alt="Card image cap">
+    //   <div class="card-body">
+    //     <h5 class="card-title">${title}</h5>
+    //     <p class="card-text">${description}</p>
+    //   </div>
+    // `;
   });
 };
 
@@ -41,6 +51,6 @@ searchBtn.addEventListener('click', async (e) => {
   e.stopPropagation();
   clearCards();
   data = await getJSONData();
-  console.log(data);
+  data.forEach((item) => {});
   showCards(data);
 });
